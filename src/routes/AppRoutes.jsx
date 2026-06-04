@@ -12,23 +12,16 @@ import Profile from "../pages/Profile";
 import { currentUser } from "../features/authAction";
 import { useDispatch } from "react-redux";
 import Movies from "../component/Movies";
-
+import MovieDetails from "../pages/movieDetails";
 
 const AppRoutes = () => {
   let dispatch = useDispatch();
 
-  useEffect(()=>{
-    (()=>{
-      dispatch(currentUser())
-    })()
-  },[])
-
-
-
-  
-
-
-
+  useEffect(() => {
+    (() => {
+      dispatch(currentUser());
+    })();
+  }, []);
 
   let router = createBrowserRouter([
     {
@@ -47,7 +40,6 @@ const AppRoutes = () => {
               path: "register",
               element: <Register />,
             },
-            
           ],
         },
       ],
@@ -74,9 +66,13 @@ const AppRoutes = () => {
               element: <Profile />,
             },
             {
-              path:"/home/movies",
-              element:<Movies/>
-            }
+              path: "/home/movies",
+              element: <Movies />,
+            },
+            {
+              path: "/home/movies/:id",
+              element: <MovieDetails />,
+            },
           ],
         },
       ],

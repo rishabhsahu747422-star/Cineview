@@ -8,7 +8,7 @@ const PublicRoute = () => {
   if (isLoading) return <h1>loading...</h1>;
 
   if (user) {
-    return <Navigate to={"/home"} />;
+    return <Navigate to={"/home/movies"} />;
   }
   return <Outlet />;
 };

@@ -29,7 +29,7 @@ const Navbar = () => {
         {/* Center Links */}
         <nav className="hidden lg:flex items-center gap-16">
           <a
-            onClick={()=>navigate('/home')}
+            onClick={()=> user?navigate('/home/movies'):navigate('/home')}
             className="text-white text-md font-semibold hover:text-orange-400 cursor-pointer transition"
           >
             Home
