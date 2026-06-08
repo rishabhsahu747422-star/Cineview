@@ -5,6 +5,7 @@ export let movieSlice = createSlice({
   name: "Movies",
   initialState: {
     movies: [],
+    search:"",
     favorites: JSON.parse(localStorage.getItem("favorites")) || [],
     isLoading: false,
   },
@@ -30,6 +31,9 @@ export let movieSlice = createSlice({
 
       localStorage.setItem("favorites", JSON.stringify(state.favorites));
     },
+     setSearch: (state, action) => {
+    state.search = action.payload;
+  },
   },
   extraReducers: (builder) => {
     builder
@@ -47,7 +51,7 @@ export let movieSlice = createSlice({
   },
 });
 
-export let { addMovies, addToFavorites, removeFromFavorites } =
+export let {search,setSearch, addMovies,isLoading, addToFavorites, removeFromFavorites } =
   movieSlice.actions;
 
 export default movieSlice.reducer;

@@ -1,49 +1,43 @@
-import React from 'react'
-import { useParams } from 'react-router'
+import React from "react";
+import { useNavigate, useParams } from "react-router";
+import { movies } from "../utils/movies";
+import { useSelector } from "react-redux";
 
 const MovieDetails = () => {
-    let {id } = useParams()
+  let navigate = useNavigate();
+  let { id } = useParams();
+  console.log(id);
+
+  const movie = movies.find((m) => m.id === Number(id));
+  console.log(movie);
+
+  const videoId = movie?.trailer.split("v=")[1]
+
   return (
     <div>
       {
-  (
-    <div className="fixed right-8 bottom-8 w-[350px] rounded-2xl bg-[#07142f] p-5 border border-white/10">
+        <div className="fixed left-70 top-40 bottom-8 w-[950px] rounded-2xl bg-[#07142f] p-5 border border-white/10">
+          <button
+            onClick={
+              () => navigate("/home/movies")
+              // setSelectedMovie(null)
+            }
+            className="cursor-pointer absolute top-2 right-3"
+          >
+            ✖
+          </button>
 
-      <button
-        onClick={() => setSelectedMovie(null)}
-        className="absolute top-2 right-3"
-      >
-        ✖
-      </button>
-
-      <img
-        src={selectedMovie.poster}
-        alt=""
-        className="h-40 w-full object-cover rounded-xl"
-      />
-
-      <h2 className="mt-3 text-xl font-bold">
-        {selectedMovie.title}
-      </h2>
-
-      <p className="text-sm text-slate-400 mt-2">
-        {selectedMovie.description}
-      </p>
-
-      <a
-        href={selectedMovie.trailer}
-        target="_blank"
-        rel="noreferrer"
-        className="mt-4 inline-block rounded-lg bg-orange-500 px-4 py-2 text-black font-semibold"
-      >
-        ▶ Watch Trailer
-      </a>
-
+          <iframe
+            width="100%"
+            height="550"
+            src={`https://www.youtube.com/embed/${videoId}`}
+            // title="Trailer"
+            allowFullScreen
+          />
+        </div>
+      }
     </div>
-  )
-}
-    </div>
-  )
-}
+  );
+};
 
-export default MovieDetails
+export default MovieDetails;

@@ -13,6 +13,7 @@ import { currentUser } from "../features/authAction";
 import { useDispatch } from "react-redux";
 import Movies from "../component/Movies";
 import MovieDetails from "../pages/movieDetails";
+import Search from "../component/Search";
 
 const AppRoutes = () => {
   let dispatch = useDispatch();
@@ -73,6 +74,10 @@ const AppRoutes = () => {
               path: "/home/movies/:id",
               element: <MovieDetails />,
             },
+            {
+              path:"/home/search",
+              element:<Search/>
+            }
           ],
         },
       ],

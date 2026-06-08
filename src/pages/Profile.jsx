@@ -12,10 +12,13 @@ import {
 import { useDispatch, useSelector } from "react-redux";
 import { removeUser } from "../features/authReducer";
 import { currentUser } from "../features/authAction";
+import { useNavigate } from "react-router";
 
 const Profile = () => {
+  let navigate =useNavigate()
   const { user } = useSelector((state) => state.auth);
   console.log(user);
+  const { favorites } = useSelector((state) => state.movie);
 
   let dispatch = useDispatch();
   return (
@@ -25,7 +28,7 @@ const Profile = () => {
         <div className="flex items-center justify-between rounded-[30px] border border-white/10 bg-[rgb(8,14,31)] px-8 py-7">
           <div className="flex items-center gap-5">
             <div className="flex h-18 w-18 items-center justify-center rounded-full bg-gradient-to-br from-orange-500 to-pink-500 text-2xl font-bold shadow-lg shadow-orange-500/30">
-              R
+              {user.user?.name[0].toUpperCase()}
             </div>
 
             <div>
@@ -33,7 +36,7 @@ const Profile = () => {
                 Welcome Back
               </p>
 
-              <h1 className="text-4xl font-bold">Rishabh Sahu</h1>
+              <h1 className="text-4xl font-bold">{user.user?.name}</h1>
 
               <p className="text-sm text-slate-400">Member since 2026</p>
             </div>
@@ -53,9 +56,9 @@ const Profile = () => {
               Favorites Saved
             </p>
 
-            <div className="flex items-center justify-between">
+            <div onClick={()=>navigate('/home/favorites')} className="cursor-pointer flex items-center justify-between">
               <div>
-                <h2 className="text-4xl font-bold">0</h2>
+                <h2 className="text-4xl font-bold">{favorites.length}</h2>
                 <p className="mt-2 text-sm text-slate-400">
                   Movies in your collection
                 </p>
@@ -173,13 +176,13 @@ const Profile = () => {
           <h2 className="mb-6 text-3xl font-semibold">Quick Actions</h2>
 
           <div className="grid gap-5 md:grid-cols-2 lg:grid-cols-4">
-            <div className="rounded-[24px] border border-white/10 bg-[#07142f] p-8 text-center">
+            <div onClick={()=>navigate('/home/favorites')} className="cursor-pointer rounded-[24px] border border-white/10 bg-[#07142f] p-8 text-center">
               <FaHeart className="mx-auto mb-4 text-4xl text-pink-500" />
               <h3 className="font-semibold">My Favorites</h3>
-              <p className="mt-1 text-sm text-slate-400">0 saved</p>
+              <p className="mt-1 text-sm text-slate-400">{favorites.length}</p>
             </div>
 
-            <div className="rounded-[24px] border border-white/10 bg-[#07142f] p-8 text-center">
+            <div onClick={() => navigate("/home/movies")} className="cursor-pointer rounded-[24px] border border-white/10 bg-[#07142f] p-8 text-center">
               <FaFilm className="mx-auto mb-4 text-4xl text-violet-400" />
               <h3 className="font-semibold">Explore</h3>
               <p className="mt-1 text-sm text-slate-400">Browse all movies</p>
