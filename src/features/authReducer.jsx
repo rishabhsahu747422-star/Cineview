@@ -7,7 +7,7 @@ export let authSlice = createSlice({
     user: null,
     isLoading: false,
   },
-  reducers: {
+  reducers:{
     addUser: (state, action) => {
       state.user = action.payload;
       state.isLoading = false;

@@ -55,7 +55,7 @@ console.log(search);
             onClick={() =>
               user ? navigate("/home/movies") : navigate("/home")
             }
-            className="text-white text-md font-semibold hover:text-orange-400 cursor-pointer transition"
+            className="text-gray-300 text-md font-semibold hover:text-orange-400 cursor-pointer transition"
           >
             Home
           </a>
@@ -98,12 +98,23 @@ console.log(search);
     `}
               />
 
-              <button
-                onClick={() => setOpen(!open)}
+              {open ?
+                  <button
+                onClick={() =>{navigate('/home/movies'),setOpen(!open)}}
                 className="h-10 w-10 flex items-center justify-center border border-blue-950 rounded-full bg-[rgb(12,17,36)] hover:border-orange-500 cursor-pointer"
               >
-                {open ? "✖" : "🔍"}
+                ✖ 
               </button>
+              
+              
+              :<button
+              type="button"
+                onClick={() =>{ setOpen(!open)}}
+                className="h-10 w-10 flex items-center justify-center border border-blue-950 rounded-full bg-[rgb(12,17,36)] hover:border-orange-500 cursor-pointer"
+              >
+                🔍
+              </button>
+                }
                </form>
             </div>
 

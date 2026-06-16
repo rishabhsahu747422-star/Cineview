@@ -7,7 +7,6 @@ import { userLogin } from "../features/authAction";
 export let useAuth =()=>{
     let dispatch = useDispatch()
 
-
   const {
     register,
     handleSubmit,
@@ -15,11 +14,9 @@ export let useAuth =()=>{
   } = useForm();
 
   const onLoginSubmit = async (data) => {
-    dispatch(userLogin(data))
+    await dispatch(userLogin(data))
   };
   
-
-
   const onRegisterSubmit = (data) => {
     console.log(data);
 

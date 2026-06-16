@@ -23,7 +23,7 @@ const Movies = () => {
 
  
   return (
-    <div className="min-h-screen bg-[#020817] text-white px-6 py-8">
+    <div className="min-h-screen bg-[#020817] text-white px-6 py-8 mt-20">
       <div className="max-w-6xl mx-auto">
         {/* Hero */}
         <div className="relative overflow-hidden rounded-3xl h-[340px] border border-white/10">

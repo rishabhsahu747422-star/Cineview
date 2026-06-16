@@ -16,3 +16,23 @@ export const getTrendingMovies = createAsyncThunk(
     }
   },
 );
+
+// import { createAsyncThunk } from "@reduxjs/toolkit";
+// import axios from "axios";
+
+// export const getMovies = createAsyncThunk(
+//   "movies/getMovies",
+//   async (_, thunkApi) => {
+//     try {
+//       const res = await axios.get(
+//         "https://www.omdbapi.com/?apikey=a3827f16&s=batman",
+//       );
+
+//       console.log(res.data);
+
+//       return res.data.Search;
+//     } catch (error) {
+//       return thunkApi.rejectWithValue(error.message);
+//     }
+//   },
+// );
