@@ -12,8 +12,8 @@ import Profile from "../pages/Profile";
 import { currentUser } from "../features/authAction";
 import { useDispatch } from "react-redux";
 import Movies from "../component/Movies";
-import MovieDetails from "../pages/movieDetails";
 import Search from "../component/Search";
+import MovieDetails from "../pages/movieDetails";
 
 const AppRoutes = () => {
   let dispatch = useDispatch();
